@@ -57,6 +57,7 @@
         this.autoUpdateInput = true;
         this.alwaysShowCalendars = false;
         this.ranges = {};
+        this.weekBatch = false;
 
         this.opens = 'right';
         if (this.element.hasClass('pull-right'))
@@ -232,7 +233,7 @@
 
         if (typeof options.singleDatePicker === 'boolean') {
             this.singleDatePicker = options.singleDatePicker;
-            if (this.singleDatePicker)
+            if (this.singleDatePicker && !this.weekBatch)
                 this.endDate = this.startDate.clone();
         }
 
@@ -271,6 +272,9 @@
                 iterator--;
             }
         }
+
+        if (typeof options.weekBatch === 'boolean')
+            this.weekBatch = options.weekBatch;
 
         var start, end, range;
 
@@ -670,8 +674,9 @@
             var minDate = side == 'left' ? this.minDate : this.startDate;
             var maxDate = this.maxDate;
             var selected = side == 'left' ? this.startDate : this.endDate;
+            var hoverWeek = this.weekBatch ? 'weekly-batch' : '';
 
-            var html = '<table class="table-condensed">';
+            var html = '<table class="table-condensed ' + hoverWeek + '">';
             html += '<thead>';
             html += '<tr>';
 
@@ -1268,6 +1273,16 @@
             // * if autoapply is enabled, and an end date was chosen, apply the selection
             // * if single date picker mode, and time picker isn't enabled, apply the selection immediately
             //
+
+
+            var weekLocale = this.locale.firstDay ? 'isoweek' : 'week';
+            if (this.weekBatch) {
+                this.setStartDate(date.clone().startOf(weekLocale));
+                this.setEndDate(date.clone().endOf(weekLocale));
+                this.clickApply();
+                this.updateView();
+                return ;
+            }
 
             if (this.endDate || date.isBefore(this.startDate, 'day')) {
                 if (this.timePicker) {

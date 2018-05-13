@@ -264,6 +264,15 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
     margin: 0;
   }
 
+  .weekly-batch tbody tr {
+    &:hover {
+      td {
+        background: $daterangepicker-cell-hover-bg-color;
+      }
+      background: $daterangepicker-cell-hover-bg-color;
+    }
+  }
+
   td, th {
     text-align: center;
     width: $daterangepicker-cell-width;
