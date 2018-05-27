@@ -297,18 +297,18 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
   td {
     &.off {
       &, &.in-range, &.start-date, &.end-date {
-        background-color: $daterangepicker-unselected-bg-color;
-        border-color: $daterangepicker-unselected-border-color;
-        color: $daterangepicker-unselected-color;
+        background-color: $daterangepicker-unselected-bg-color !important;
+        border-color: $daterangepicker-unselected-border-color !important;
+        color: $daterangepicker-unselected-color !important;
       }
     }
 
     //
     // Date Range
     &.in-range {
-      background-color: $daterangepicker-in-range-bg-color;
-      border-color: $daterangepicker-in-range-border-color;
-      color: $daterangepicker-in-range-color;
+      background-color: $daterangepicker-in-range-bg-color !important;
+      border-color: $daterangepicker-in-range-border-color !important;
+      color: $daterangepicker-in-range-color !important;
 
       // TODO: Should this be static or should it be parameterized?
       border-radius: 0;
@@ -328,9 +328,9 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
 
     &.active {
       &, &:hover {
-        background-color: $daterangepicker-active-bg-color;
-        border-color: $daterangepicker-active-border-color;
-        color: $daterangepicker-active-color;
+        background-color: $daterangepicker-active-bg-color !important;
+        border-color: $daterangepicker-active-border-color !important;
+        color: $daterangepicker-active-color !important;
       }
     }
   }
